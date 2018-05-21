@@ -29,6 +29,15 @@ public:
      * @return 0 on success
      */
     virtual int8_t read(uint8_t slave_address, uint8_t* data, uint16_t length) = 0;
+
+    /**
+     * generate 9 Stop conditions that reset all I2C slave's that may be in an erroneous condition
+     * @note this is particularly useful when a slave does not have a discrete reset pin and the
+     *       host is restarted while communicating with it
+     * @return 0 on success
+     */
+    virtual int8_t resetBus() = 0;
+
     virtual ~I2cInterface() {}
 };
 
